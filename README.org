@@ -5,12 +5,17 @@
 
 #+STARTUP: overview indent
 
+* Introduction
+This repository is focused on running OpenMX calculations and extracting the
+real-space Hamiltonian.
+
 * Setup
 
 
 
 * Code                                                             :noexport:
 
+This is executable Emacs org-mode code that performs GitHub tasks.
 ** Create new Repository
 
 #+begin_src zsh :results output
@@ -22,3 +27,10 @@
   git remote add origin https://github.com/enriquepacis/kodiak-openmx.git
   git push -u origin main
 #+end_src
+
+#+RESULTS:
+: Initialized empty Git repository in /Users/enrique_blair/Library/CloudStorage/Box-Box/Research/2026/kodiak-openmx/.git/
+: [main (root-commit) 2cae4c1] first commit
+:  1 file changed, 24 insertions(+)
+:  create mode 100644 README.org
+: branch 'main' set up to track 'origin/main'.

@@ -9,6 +9,8 @@
 This repository is focused on running OpenMX calculations and extracting the
 real-space Hamiltonian.
 
+
+
 * Setup
 
 
@@ -34,3 +36,17 @@ This is executable Emacs org-mode code that performs GitHub tasks.
 :  1 file changed, 24 insertions(+)
 :  create mode 100644 README.org
 : branch 'main' set up to track 'origin/main'.
+** Sync Local-Remote Repository
+
+#+begin_src zsh :results output
+  source ~/.zshrc
+  git add README.org
+  git commit -m "Updates the README"
+  git pull
+  git push
+#+end_src
+
+#+RESULTS:
+: [main a841847] Updates the README
+:  1 file changed, 12 insertions(+)
+: Already up to date.

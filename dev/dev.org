@@ -39,14 +39,29 @@ This is executable Emacs org-mode code that performs GitHub tasks.
 
 #+begin_src zsh :results output
   source ~/.zshrc
-  git add README.org
-  git commit -m "Adds instructions on serving Jupyter Lab from a compute node."
+  cd .. # navigate to main directory
+  git add dev/dev.org
+  git commit -m "Adds Shell Tasks to dev.org"
   git pull
   git push
 #+end_src
 
 #+RESULTS:
-: [main 1c6f51f] Adds instructions on serving Jupyter Lab from a compute node.
-:  1 file changed, 60 insertions(+), 3 deletions(-)
+: [main 95b4ec5] Moves executable code blocks from README to dev.org.
+:  1 file changed, 1 insertion(+), 35 deletions(-)
 : Already up to date.
 
+* Shell Tasks
+#+begin_src zsh :results output
+  pwd
+  ls *.org
+  # mkdir dev
+  # mv dev.org dev
+  # ls dev
+  mkdir src
+  mkdir src/kodiak_openmx
+#+end_src
+
+#+RESULTS:
+: /Users/enrique_blair/Library/CloudStorage/Box-Box/Research/2026/kodiak-openmx
+: README.org

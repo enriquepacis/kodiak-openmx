@@ -70,40 +70,6 @@ real-space Hamiltonian.
    #+begin_quote
    http://localhost:8887/lab?token=YOUR_TOKEN
    #+end_quote
+   where ~YOUR_TOKEN~ is the token we saved earlier.
 
 
-* Code                                                             :noexport:
-
-This is executable Emacs org-mode code that performs GitHub tasks.
-** Create new Repository
-
-#+begin_src zsh :results output
-  source ~/.zshrc
-  git init
-  git add README.org
-  git commit -m "first commit"
-  git branch -M main
-  git remote add origin https://github.com/enriquepacis/kodiak-openmx.git
-  git push -u origin main
-#+end_src
-
-#+RESULTS:
-: Initialized empty Git repository in /Users/enrique_blair/Library/CloudStorage/Box-Box/Research/2026/kodiak-openmx/.git/
-: [main (root-commit) 2cae4c1] first commit
-:  1 file changed, 24 insertions(+)
-:  create mode 100644 README.org
-: branch 'main' set up to track 'origin/main'.
-** Sync Local-Remote Repository
-
-#+begin_src zsh :results output
-  source ~/.zshrc
-  git add README.org
-  git commit -m "Adds instructions on serving Jupyter Lab from a compute node."
-  git pull
-  git push
-#+end_src
-
-#+RESULTS:
-: [main c08489d] Updates the README
-:  1 file changed, 16 insertions(+)
-: Already up to date.

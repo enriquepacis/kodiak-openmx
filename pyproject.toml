@@ -1,0 +1,13 @@
+[project]
+name = "kodiak-openmx"
+version = "0.1.0"
+description = "Tools for running OpenMX on Kodiak HPC"
+authors = [{name = "Enrique Blair"}]
+dependencies = [
+    "ase",
+    "jupyterlab",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

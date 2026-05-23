@@ -14,6 +14,63 @@ real-space Hamiltonian.
 * Setup
 
 
+** Tunneling into Kodiak for Jupyter Service
+
+*** Start a Jupyter Lab server
+
+1. Login on kodiak from a local terminal using something like, but customizing
+   ~your_username~ with a value appropriate to you:
+   #+begin_src zsh :eval never
+     ssh your_username@kodiak.baylor.edu
+   #+end_src
+2. Establish an interactive session on a compute node:
+   #+begin_src zsh :eval never
+     qsub -I -q batch
+   #+end_src
+   This gets us one core on one compute node on the batch queue.
+3. Find the hostname for the compute node we're using:
+   #+begin_src zsh :eval never :results output
+     hostname
+   #+end_src
+   For example, I may use ~hostname~ and see this:
+   #+begin_src zsh :results output :eval never
+     $ hostname
+     n024
+   #+end_src
+   Thus, the node is ~n024~.
+4. Activate the desired Python environment.
+   This environment must have ~jupyterlab~ installed.
+5. Start Jupyter (headless)
+   #+begin_src zsh :results output
+     jupyter lab --no-browser --ip=0.0.0.0 --port=8887
+   #+end_src
+   I'm suggesting that we use a specific (non-default) port number (default
+   is 8888) so that we have a distinct Jupyter Lab from the default that may be
+   running locally (this likely won't matter).
+
+   The use of ~--ip=0.0.0.0~ allows the login node to "see" port 8887 of the
+   compute node.
+
+   The above command should include in its output information like this:
+   #+begin_quote
+       To access the server, open this file in a browser:
+        file:///ion/home/your_username/.local/share/jupyter/runtime/jpserver-1281948-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8887/lab?token=58ff72ece4f31b1858834096f0dfb92d8897139c0e729438
+        http://127.0.0.1:8887/lab?token=58ff72ece4f31b1858834096f0dfb92d8897139c0e729438
+   #+end_quote
+   From this, we save the token. In this example, it's ~58ff72ece4f31b1858834096f0dfb92d8897139c0e729438~
+6. Tunnel from your laptop or local computer
+   #+begin_src zsh :eval never
+     ssh -L 8887:n024:8887 blaire@kodiak.baylor.edu
+   #+end_src
+
+   This maps local port 8887 of my laptop to port 8887 of n024 on Kodiak.
+7. Point a browser to:
+   #+begin_quote
+   http://localhost:8887/lab?token=YOUR_TOKEN
+   #+end_quote
+
 
 * Code                                                             :noexport:
 
@@ -41,12 +98,12 @@ This is executable Emacs org-mode code that performs GitHub tasks.
 #+begin_src zsh :results output
   source ~/.zshrc
   git add README.org
-  git commit -m "Updates the README"
+  git commit -m "Adds instructions on serving Jupyter Lab from a compute node."
   git pull
   git push
 #+end_src
 
 #+RESULTS:
-: [main a841847] Updates the README
-:  1 file changed, 12 insertions(+)
+: [main c08489d] Updates the README
+:  1 file changed, 16 insertions(+)
 : Already up to date.

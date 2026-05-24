@@ -5,7 +5,8 @@ description = "Tools for running OpenMX on Kodiak HPC"
 authors = [{name = "Enrique Blair"}]
 dependencies = [
     "ase",
-    "jupyterlab",
+    "numpy",
+    "scipy"
 ]
 
 [build-system]

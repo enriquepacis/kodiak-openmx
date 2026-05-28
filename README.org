@@ -13,6 +13,72 @@ real-space Hamiltonian.
 
 * Setup
 
+** Installation
+
+*** Obtain the Code from GitHub
+The first step is to obtain this repository from GitHub. On Kodiak,
+navigate to a location where you want to clone the code. Then, use
+#+begin_src sh :eval never
+  git clone https://github.com/enriquepacis/kodiak-openmx.git
+#+end_src
+
+*** Create, activate, and configure a Python Virtual Environment
+I created this repository for use with the ~Python 3.12.8~ available
+on Kodiak.
+1. Use ~module load python/3.12.8~ either explicitly or in your
+   ~./bashrc~ to use the recommended version of Python.
+2. Create the ~venv~ using a customized version of
+   #+begin_src sh :eval never
+     python -m venv /path/to/venv/my-env-name
+   #+end_src
+3. Activate your new virtual environment using
+   #+begin_src sh :eval never
+     source /path/to/venv/my-env-name/bin/activate
+   #+end_src
+4. Use
+   #+begin_src sh :eval never
+     pip install -e .
+   #+end_src
+   to install the dependencies and the custom ~openmx_tools~ package.
+
+*** Link the ~/data/...~ Storage Path to Your
+
+We want to minimize the data we store in our
+~/ion/home/your_username/~ path, since it is quite limited. However,
+there is a larger, longer-term storage path,
+~/data/your_username/~. Suppose we have
+~/ion/home/your_username/.../kodiak-openmx~ as a clone of the repo,
+and we have prepared ~/data/your_username/openmx-storage~ as a
+long-term storage directory we created for our calculations. Then,
+within ~kodiak-openmx~, we can create ~calcs~ as a symbolic link
+to the longer-term storage. In the
+~kodiak-openmx~ directory, use something like
+#+begin_src sh :eval never
+  # structure: ln -s /path/to/storage-dir sym-link
+  ln -s /data/your_username/openmx-storage calcs
+#+end_src
+
+To verify the creation of a symbolic link, we can use ~ls -lt~ in the
+~kodiak-openmx~ directory. Mine looks like this:
+#+begin_src sh :eval never
+  $ ls -lt
+  total 518
+  lrwxrwxrwx 1 blaire blaire   26 May 23 17:30  calcs -> /data/blaire/kodiak-openmx
+  -rw-r--r-- 1 blaire blaire 4181 May 23 17:30 '#README.org#'
+  drwxr-xr-x 2 blaire blaire  512 May 23 16:39  dev
+  drwxr-xr-x 4 blaire blaire  512 May 23 16:29  src
+  -rw-r--r-- 1 blaire blaire  280 May 23 16:28  pyproject.toml
+  -rw-r--r-- 1 blaire blaire  118 May 23 16:28  environment.yml
+  drwxr-xr-x 4 blaire blaire  512 May 23 16:12  notebooks
+  -rw-r--r-- 1 blaire blaire 2481 May 23 13:33  README.org
+#+end_src
+The entry for ~calcs~ is at the top, and it is indicated as a symbolic
+link by the first character ~l~ on that line, along with the ~->~
+indicating the path it links to.
+
+Now, within ~openmx-, we can treat ~calcs~ like a directory, but
+anything we do to ~calcs~ is actually done to the storage path it
+links to.
 
 ** Tunneling into Kodiak for Jupyter Service
 

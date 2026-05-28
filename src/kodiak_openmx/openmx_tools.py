@@ -1,7 +1,7 @@
 import subprocess as sp
 import os
 from pathlib import Path
-import pbs_tools as pbs
+from . import pbs_tools as pbs
 
 import numpy as np
 from scipy.sparse import coo_matrix

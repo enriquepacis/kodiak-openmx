@@ -10,6 +10,41 @@ This repository is focused on running OpenMX calculations and extracting the
 real-space Hamiltonian.
 
 
+* Basis Functions
+
+** Pseudo-atomic Orbitals (PAOs)
+
+OpenMX uses localized atomic-like basis functions called pseudo-atomic orbitals
+(PAOs). Each basis function is \(\phi_{i\alpha}(\mathbf{r})\) is a numerical
+atomic orbital centered on atom \(i\). The angular part of \(\phi_{i\alpha}\) is
+defined by spherical harmonics, and the radial part is the numerical solution of
+the atomic problem.
+
+For example, we may use ~H5.0-s2p1~, where
+- a cutoff radius of 5.0 Bohr is specified for hydrogen,
+- 2 radial functions are used for the s orbital
+- 1 radial function is used for p orbitals
+Here, we will expect 2 s orbitals and one orbital each for the px, py, and pz
+orbitals, for a total of 5 orbitals as basis functions.
+
+For a system of two H atoms, we might conceptualize the real-space Hamiltonian
+elements as \(H_{i\alpha,j\beta}\), which is the transition energy between
+oribtal \(\beta\) on the \(j\)-atom 
+
+
+** Structure of the Basis
+
+OpenMX uses atom-major ordering, then orbital ordering, with index \(\nu = (i,
+\alpha)\), where
+- \(i\) indexes atoms, and
+- \(\alpha\) indexes an orbital on that atom
+
+- What is the atomic problem?
+- Break down for me further what it means to use multiple radial functions for
+  an s orbital
+- What does it look like to use multiple 
+
+* Gauge Convention
 
 * Setup
 

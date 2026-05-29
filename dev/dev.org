@@ -2793,9 +2793,8 @@ This is executable Emacs org-mode code that performs GitHub tasks.
 #+begin_src sh :results output
   source ~/.bashrc
   cd .. # navigate to main directory
-  git add *.toml
-  git add src/kodiak_openmx/*.py
-  git commit -m "Adds python tools and pyproject.toml"
+  git add README.org
+  git commit -m "Adds notes to README"
   git pull
   git push
 #+end_src

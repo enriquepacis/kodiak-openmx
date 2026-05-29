@@ -23,7 +23,8 @@ GitHub tasks.
   authors = [{name = "Enrique Blair"}]
   dependencies = [
       "ase",
-      "jupyterlab",
+      "numpy",
+      "scipy"
   ]
 
   [build-system]
@@ -39,6 +40,20 @@ Verify that the code was tangled:
 #+RESULTS:
 : -rw-r--r-- 1 blaire blaire 273 May 23 15:22 ../pyproject.toml
 
+** ~environment.yml~
+
+#+begin_src sh :eval never :tangle ../environment.yml
+  dependencies:
+    - python=3.12
+    - numpy
+    - scipy
+    - ase
+    - jupyterlab
+    - matplotlib
+    - pip
+    - pip:
+        - -e .
+#+end_src
 
 ** PBS Tools
 
@@ -152,13 +167,13 @@ Verify that the code was tangled:
           # print(f'JobQueued = {JobQueued}')
           # print(f'JobStarted = {JobStarted}')
           # print(f'JobEnded = {JobEnded}')
-    
+
           if JobEnded:
               if job_done( output_file ):
                   status = 'done'
               else:
                   status = 'aborted'
-            
+
           else: # job isn't done. It could be aborted, running, or queued
 
               if JobID is not None:
@@ -185,7 +200,7 @@ Verify that the code was tangled:
           status = None
 
       return status
-    
+
   def PBS_job_status( status_file ):
       """
          Queries PBS and returns the PBS status of a job.
@@ -254,7 +269,7 @@ Verify that the code was tangled:
   import subprocess as sp
   import os
   from pathlib import Path
-  import pbs_tools as pbs
+  from . import pbs_tools as pbs
 
   import numpy as np
   from scipy.sparse import coo_matrix
@@ -2766,7 +2781,14 @@ Verify that the code was tangled:
           return S.tocsr()
 #+end_src
 
+** ~__init__.py~
 
+#+begin_src python :results output :tangle ../src/kodiak_openmx/__init__.py
+  __version__ = "0.1.0"
+
+  from .openmx_tools import *
+  from .pbs_tools import *
+#+end_src
 * GitHub                                                       :noexport:
 
 This is executable Emacs org-mode code that performs GitHub tasks.
@@ -2801,13 +2823,6 @@ This is executable Emacs org-mode code that performs GitHub tasks.
 
 #+RESULTS:
 
-*** Troubleshooting on Kodiak 
-Check for an ssh key:
-#+begin_src sh :results output
-  ls ~/.ssh/id_ed25519.pub
-#+end_src
-
-#+RESULTS:
 
 * Shell Tasks
 #+begin_src zsh :results output
@@ -2826,12 +2841,16 @@ Check for an ssh key:
 
 #+begin_src sh :results output
   pwd
-  cd ..
+  cd .. # move to main dir
   source ~/.bashrc
   pwd
-  mkdir src/kodiak_openmx
+  # mkdir notebooks
+  # mkdir notebooks/examples
+  mkdir notebooks/tutorials
 #+end_src
 
 #+RESULTS:
 : /ion/home/blaire/Research/kodiak-openmx/dev
 : /ion/home/blaire/Research/kodiak-openmx
+
+* 

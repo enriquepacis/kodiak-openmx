@@ -93,13 +93,7 @@ We perform a DFT calculation in OpenMX using a localized basis set $\{\phi_{i\al
 - a real-space Hamiltonian, $H_{i\alpha, j\beta}(\mathbf{R})$
 - a real-space overlap matrix, $S_{i\alpha, j\beta}(\mathbf{R})$
 - a reference band structure $E_n(\mathbf{k})$ along a prescribed k-path from the `.Band` file
-perform an OpenMX calculation that produces both a real-space Hamiltonian and a band structure. We then extract the real-space Hamiltonian $H_{ij}(\mathbf{R})$ and the overlap matrix $
-
-## Gauge Convention
-
-OpenMX uses the lattice gauge, where the phase factor in a Bloch sum depends on the lattice vector only:
-
-$$H_{ij} \left( \mathbf{k} \right) = \sum_{\mathbf{R}} H_{ij}\left( \mathbf{R} \right) e^{i \mathbf{k} \cdot \mathbf{R}}$$
+perform an OpenMX calculation that produces both a real-space Hamiltonian and a band structure. We then extract the real-space Hamiltonian $H_{i\alpha, j\beta}(\mathbf{R})$ and the overlap matrix $S_{i\alpha, j\beta}(\mathbf{R})$.
 
 The Bloch reconstruction requires the calculation of the k-dependent Hamiltonian and overlap matrices:
 
@@ -112,6 +106,13 @@ At each k-point in the k-path, we solve the generalized eigenvalue problem:
 $$H(\mathbf{k}) \mathbf{c}_n (\mathbf{k}) = E_n (\mathbf{k}) S(\mathbf{k}) \mathbf{c}_n (\mathbf{k}) $$
 
 for band energies $E_{n}(\mathbf{k})$ and eigenvectors $\mathbf{c}_n(\mathbf{k})$.
+
+
+## Gauge Convention
+
+OpenMX uses the lattice gauge, where the phase factor in a Bloch sum depends on the lattice vector only:
+
+$$H_{ij} \left( \mathbf{k} \right) = \sum_{\mathbf{R}} H_{ij}\left( \mathbf{R} \right) e^{i \mathbf{k} \cdot \mathbf{R}}$$
 
 
 ## Setup

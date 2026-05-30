@@ -17,6 +17,14 @@ real-space Hamiltonian.
    pip install -e .
    ```
 
+## Contents
+
+This repo contains examples of `ase`-based OpenMX calculations that generate a real-space Hamiltonian. It also provides a parser for an `.scfout` file tthat contains the real-space Hamiltonian. The parser has been tested on the following systems:
+1. a 1D H chain
+2. a graphene sheet
+3. a Si lattice
+
+Demonstrations of these calculations are found in the `notebooks/examples` directory, along with limited validation.
 
 ## Basis Functions
 

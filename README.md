@@ -105,8 +105,7 @@ At each k-point in the k-path, we solve the generalized eigenvalue problem:
 
 $$H(\mathbf{k}) \mathbf{c}_n (\mathbf{k}) = E_n (\mathbf{k}) S(\mathbf{k}) \mathbf{c}_n (\mathbf{k}) $$
 
-for band energies $E_{n}(\mathbf{k})$ and eigenvectors $\mathbf{c}_n(\mathbf{k})$.
-
+for band energies $E_{n}(\mathbf{k})$ and eigenvectors $\mathbf{c}_n(\mathbf{k})$. The calculated band energies energies $E_{n}(\mathbf{k})$ are then compared against the reference OpenMX band structure.
 
 ## Gauge Convention
 

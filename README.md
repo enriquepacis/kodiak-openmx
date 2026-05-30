@@ -23,6 +23,8 @@ $$
 $$
 centered on atom \(i\). The radial functions \(R_{\alpha}(r)\) are derived from an isolated atom calculation and then truncated at a chosen cutoff radius.
 
+Let's try another equation:
+$$F = ma$$
 
 The orbitals used for each atomic species is specified in the OpenMX input file using strings such as `H5.0-s2p1`, where
 * a cutoff radius of 5.0 Bohr is specified for hydrogen,

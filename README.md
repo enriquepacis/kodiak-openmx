@@ -15,14 +15,15 @@ atomic orbital centered on atom $i$. The angular part of $\phi_{i\alpha}$ is
 defined by spherical harmonics, and the radial part is the numerical solution of
 the atomic problem.
 
-For example, we may use `H5.0-s2p1`, where
+The atomic problem means solving the Schrodinger equation for an isolated atom. That is, for an atom with nuclear charge $Z$, we solve the spherically symmetric electronic structure problem,
+$$\hat{H}_{\mbox{atom}} \psi_{n\ell m} = E_{n\ell} \psi_{n\ell m}$$
 
+The orbitals used for each atomic species is specified in the OpenMX input file using strings such as `H5.0-s2p1`, where
 * a cutoff radius of 5.0 Bohr is specified for hydrogen,
 * 2 radial functions are used for the s orbital,
 * 1 radial function is used for p orbitals.
 
-Here, we will expect 2 s orbitals and one orbital each for the px, py, and pz
-orbitals, for a total of 5 orbitals as basis functions.
+Here, we will expect 2 s orbitals and one orbital each for the px, py, and pz orbitals, for a total of 5 orbitals as basis functions. This is essentially a double-zeta s basis plus one set of polarization p functions.
 
 For a system of two H atoms, we might conceptualize the real-space Hamiltonian
 elements as $H_{i\alpha,j\beta}$, which is the transition energy between
@@ -30,19 +31,20 @@ orbital $\beta$ on the $j$-atom. For Python, we flatten $i\alpha$ to an
 integer index using something like this:
 
 ```python
+# Starting integer index for atom i
 i0 = self.orbital_offset[ct_AN]
+# Starting integer index for atom j
 j0 = self.orbital_offset[Gh_AN]
 
-rows.append(i0 + i)
-cols.append(j0 + j)
+rows.append(i0 + i) # index orbitals of atom i
+cols.append(j0 + j) # index orbitals of atom j
 ```
 
 Here,
-
-* `ct_AN` maps to atom index $i$,
-* `i` is orbital index $\alpha$,
-* `Gh_AN` maps to atom index $j$,
-* `j` is orbital index $\beta$.
+* `ct_AN` maps to atom index $i$. `AN` is for atom number, and `ct` is for central. The central atom is the atom being processed.
+* `i` is orbital index $\alpha$ on the central atom,
+* `Gh_AN` maps to atom index $j$. `Gh_AN` is for *ghost atom number*. The ghost atom is essentially the neighboring atom whose interaction with the central atom is currently being evaluated.
+* `j` is orbital index $\beta$ on the ghost atom.
 
 ### Structure of the Basis
 
@@ -50,9 +52,9 @@ OpenMX uses atom-major ordering, then orbital ordering, with index
 $\nu = (i,\alpha)$, where
 
 * $i$ indexes atoms, and
-
 * $\alpha$ indexes an orbital on that atom.
 
+Some questions
 * What is the atomic problem?
 
 * Break down for me further what it means to use multiple radial functions for

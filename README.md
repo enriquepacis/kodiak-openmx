@@ -66,7 +66,7 @@ $\nu = (i,\alpha)$, where
 
 OpenMX uses the lattice gauge, where the phase factor in a Bloch sum depends on the lattice vector only:
 
-$$H_{ij} \left( \mathbf{k} \right) = \sum_{\mathbf{R}} H_{ij}\left( \mathbf{R} \right) e^{i \mathbf{k} \cdot \mathbf{R}$$
+$$H_{ij} \left( \mathbf{k} \right) = \sum_{\mathbf{R}} H_{ij}\left( \mathbf{R} \right) e^{i \mathbf{k} \cdot \mathbf{R}}$$
 
 ## Setup
 

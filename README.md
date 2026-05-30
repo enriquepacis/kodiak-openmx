@@ -83,11 +83,36 @@ $\nu = (i,\alpha)$, where
 * $\alpha$ indexes an orbital on that atom.
 
 
+## Validation
+
+The method here for validation is to compare
+1. the band structure computed internally by OpenMX with
+2. the band structure reconstructed from the real-space Hamiltonian and overlap matrices extracted from the OpenMX output.
+
+We perform a DFT calculation in OpenMX using a localized basis set $\{\phi_{i\alpha}(\mathbf{r})\}$ that produces:
+- a real-space Hamiltonian, $H_{i\alpha, j\beta}(\mathbf{R})$
+- a real-space overlap matrix, $S_{i\alpha, j\beta}(\mathbf{R})$
+- a reference band structure $E_n(\mathbf{k})$ along a prescribed k-path from the `.Band` file
+perform an OpenMX calculation that produces both a real-space Hamiltonian and a band structure. We then extract the real-space Hamiltonian $H_{ij}(\mathbf{R})$ and the overlap matrix $
+
 ## Gauge Convention
 
 OpenMX uses the lattice gauge, where the phase factor in a Bloch sum depends on the lattice vector only:
 
 $$H_{ij} \left( \mathbf{k} \right) = \sum_{\mathbf{R}} H_{ij}\left( \mathbf{R} \right) e^{i \mathbf{k} \cdot \mathbf{R}}$$
+
+The Bloch reconstruction requires the calculation of the k-dependent Hamiltonian and overlap matrices:
+
+$$ H_{i \alpha, j \beta} (\mathbf{k} ) = \sum_{\mathbf{R}} H_{i\alpha, j\beta}(\mathbf{R}) e^{i \mathbf{k} \cdot \mathbf{R}}$$
+
+$$ S_{i \alpha, j \beta} (\mathbf{k} ) = \sum_{\mathbf{R}} S_{i\alpha, j\beta}(\mathbf{R}) e^{i \mathbf{k} \cdot \mathbf{R}}$$
+
+At each k-point in the k-path, we solve the generalized eigenvalue problem:
+
+$$H(\mathbf{k}) \mathbf{c}_n (\mathbf{k}) = E_n (\mathbf{k}) S(\mathbf{k}) \mathbf{c}_n (\mathbf{k}) $$
+
+for band energies $E_{n}(\mathbf{k})$ and eigenvectors $\mathbf{c}_n(\mathbf{k})$.
+
 
 ## Setup
 

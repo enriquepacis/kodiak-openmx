@@ -18,7 +18,9 @@ the atomic problem.
 The atomic problem means solving the Schrodinger equation for an isolated atom. That is, for an atom with nuclear charge $Z$, we solve the spherically symmetric electronic structure problem,
 $$\hat{H}_{\mbox{atom}} \psi_{n\ell m} = E_{n\ell} \psi_{n\ell m}$$
 OpenMX does not use analytic basis functions such as Gaussian functions. Instead, it solves the atomic problem numerically and uses the resulting radial functions to construct basis orbitals:
-\[\phi_{i\alpha} \left( \mathbf{r} \right) = R_{\alpha} \left( \left| \mathbf{r} - \mathbf{R}_i \right|  \right) Y_{\ell m} \left( \mathbf{r} - \mathbf{R}_i \right)\]
+$$
+\phi_{i\alpha} \left( \mathbf{r} \right) = R_{\alpha} \left( \left| \mathbf{r} - \mathbf{R}_i \right|  \right) Y_{\ell m} \left( \mathbf{r} - \mathbf{R}_i \right)
+$$
 centered on atom \(i\). The radial functions \(R_{\alpha}(r)\) are derived from an isolated atom calculation and then truncated at a chosen cutoff radius.
 
 

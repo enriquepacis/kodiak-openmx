@@ -5,6 +5,19 @@
 This repository is focused on running OpenMX calculations and extracting the
 real-space Hamiltonian.
 
+### Installation
+
+1. Clone this repo using
+   ```
+   git clone https://github.com/enriquepacis/kodiak-openmx.git
+   ```
+2. Create and activate a Python virtual environment for this project.
+3. Navigate to the main directory and install the packages for this project using
+   ```
+   pip install -e .
+   ```
+
+
 ## Basis Functions
 
 ### Pseudo-atomic Orbitals (PAOs)

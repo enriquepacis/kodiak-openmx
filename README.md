@@ -61,15 +61,12 @@ $\nu = (i,\alpha)$, where
 * $i$ indexes atoms, and
 * $\alpha$ indexes an orbital on that atom.
 
-Some questions
-* What is the atomic problem?
-
-* Break down for me further what it means to use multiple radial functions for
-  an s orbital.
-
-* What does it look like to use multiple
 
 ## Gauge Convention
+
+OpenMX uses the lattice gauge, where the phase factor in a Bloch sum depends on the lattice vector only:
+
+$$H_{ij} \left( \mathbf{k} \right) = \sum_{\mathbf{R}} H_{ij}\left( \mathbf{R} \right) e^{i \mathbf{k} \cdot \mathbf{R}$$
 
 ## Setup
 

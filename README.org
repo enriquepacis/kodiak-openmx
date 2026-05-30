@@ -15,7 +15,7 @@ real-space Hamiltonian.
 ** Pseudo-atomic Orbitals (PAOs)
 
 OpenMX uses localized atomic-like basis functions called pseudo-atomic orbitals
-(PAOs). Each basis function is $phi_{i\alpha}(\mathbf{r})$ is a numerical
+(PAOs). Each basis function is $\phi_{i\alpha}(\mathbf{r})$ is a numerical
 atomic orbital centered on atom \(i\). The angular part of \(\phi_{i\alpha}\) is
 defined by spherical harmonics, and the radial part is the numerical solution of
 the atomic problem.
@@ -29,7 +29,20 @@ orbitals, for a total of 5 orbitals as basis functions.
 
 For a system of two H atoms, we might conceptualize the real-space Hamiltonian
 elements as \(H_{i\alpha,j\beta}\), which is the transition energy between
-oribtal \(\beta\) on the \(j\)-atom 
+oribtal \(\beta\) on the \(j\)-atom. For Python, we flatten \(i\alpha\) to an
+integer index using something like this:
+#+begin_src python :eval never
+  i0 = self.orbital_offset[ct_AN]
+  j0 = self.orbital_offset[Gh_AN]
+
+  rows.append(i0 + i)
+  cols.append(j0 + j)
+#+end_src
+Here,
+- ~ct_AN~ maps to atom index \(i\),
+- ~i~ is orbital index \(\alpha\),
+- ~Gh_AN~ maps to atom index \(j\)
+- ~j~ is orbital index \(\beta\),
 
 
 ** Structure of the Basis

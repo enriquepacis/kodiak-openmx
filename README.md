@@ -159,7 +159,7 @@ $$H_{ij} \left( \mathbf{k} \right) = \sum_{\mathbf{R}} H_{ij}\left( \mathbf{R} \
 6. Tunnel from your laptop or local computer
 
    ```zsh
-   ssh -L 8887:n024:8887 blaire@kodiak.baylor.edu
+   ssh -L 8887:n024:8887 your_username@kodiak.baylor.edu
    ```
 
    This maps local port 8887 of my laptop to port 8887 of n024 on Kodiak.

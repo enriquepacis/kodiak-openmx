@@ -1,0 +1,10 @@
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - ase
+  - jupyterlab
+  - matplotlib
+  - pip
+  - pip:
+      - -e .

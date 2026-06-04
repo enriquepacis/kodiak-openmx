@@ -1,0 +1,35 @@
+System.CurrentDirectory        ./
+System.Name        H_chain
+DATA.PATH        /usr/local/apps/openmx/3.9/DFT_DATA19
+Species.Number        1
+<Definition.of.Atomic.Species
+    H  H5.0-s2p1  H_PBE19
+Definition.of.Atomic.Species>
+
+Atoms.Number        1
+Atoms.SpeciesAndCoordinates.Unit        Ang
+<Atoms.SpeciesAndCoordinates
+    1  H  0.0  0.0  0.0  0.5  0.5
+Atoms.SpeciesAndCoordinates>
+
+Atoms.UnitVectors.Unit        Ang
+<Atoms.UnitVectors
+    3.0  0.0  0.0
+    0.0  15.0  0.0
+    0.0  0.0  15.0
+Atoms.UnitVectors>
+
+Band.Dispersion        On
+Band.Nkpath        1
+<Band.kpath
+    101  -0.5  0.0  0.0  0.5  0.0  0.0  X  X
+Band.kpath>
+
+scf.Kgrid        24 1 1
+scf.maxIter        100
+scf.energycutoff        150
+scf.XcType        GGA-PBE
+scf.SpinPolarization        On
+scf.EigenvalueSolver        dc
+scf.Mixing.Type        Rmm-Diis
+HS.fileout        On

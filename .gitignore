@@ -8,6 +8,7 @@ __pycache__/
 
 # HPC / raw output
 calcs/
+calcs
 
 # OpenMX raw outputs
 *.cube
@@ -19,3 +20,4 @@ calcs/
 *~
 #*#
 .#*
+\#*\#

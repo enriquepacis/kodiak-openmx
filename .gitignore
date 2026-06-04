@@ -1,0 +1,21 @@
+# Python environment
+*.egg-info/
+
+# Python / Jupyter
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# HPC / raw output
+calcs/
+
+# OpenMX raw outputs
+*.cube
+*.out
+*.scfout
+*.Band
+
+# Emacs temp files
+*~
+#*#
+.#*

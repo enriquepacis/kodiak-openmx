@@ -26,6 +26,16 @@ This repo contains examples of `ase`-based OpenMX calculations that generate a r
 
 Demonstrations of these calculations are found in the `notebooks/examples` directory, along with limited validation.
 
+### Example datasets
+
+Compressed OpenMX output files (*.Band.gz, *.scfout.gz) are provided
+for each example system under:
+
+`notebooks/examples/<system>/data/`
+
+These allow users to run the parsing and validation workflows without
+submitting new HPC jobs.
+
 ## Basis Functions
 
 ### Pseudo-atomic Orbitals (PAOs)
